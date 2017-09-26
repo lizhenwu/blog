@@ -313,25 +313,63 @@
         <body id="scheme-Paradox" class="lazy">
             <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
                 
-                <div id="bgm" class="aplayer">
-
+                <div class="bgmBox">
+    <div id="bgm" class="aplayer">             
+    </div>
+    <div id="bgm-btn"><a>&lt;</a></div>
 </div>
 <style>
-    #bgm{
+    .bgmBox{
         position: fixed;
         z-index: 999;
         top: 70%;
         left: 0;
+        transition: all 0.5s ease;
+    }
+    #bgm{
+        margin: 0;
+        background: white;
         width: 200px;
+        float: left;
+    }
+    #bgm-btn{
+        height: 66px;
+        width: 20px;
+        color: white;
+        background: #4c8cf2;
+        float: left;
+        cursor: pointer;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
+    }
+    #bgm-btn a{
+        line-height: 66px;
+        margin-left: 3px;
+        display: inline-block
     }
 </style>
 <script type="text/javascript">
+    let hide = false;
+    const btn = document.getElementById('bgm-btn');
+    const bgmBox = document.getElementsByClassName('bgmBox')[0];
+    const toLeftLength = window.getComputedStyle(document.getElementById('bgm')).width;
+    const arrow = document.querySelector('#bgm-btn a');
+    btn.onclick = function() {
+        if(!hide) {
+            bgmBox.style.left = `-${toLeftLength}`;
+            arrow.style.transform = 'rotate(180deg)';
+        } else {
+            bgmBox.style.left = '0';
+            arrow.style.transform = 'rotate(0deg)';
+        }
+        hide = !hide;
+    }
     const ap = new APlayer({
         element: document.getElementById('bgm'),
+        autoplay: true, 
         music: {
-            title: '被禁忌的游戏',
-            author: '李志',
-            url: 'http://omuwxq7xd.bkt.clouddn.com/%E6%9D%8E%E5%BF%97%20-%20%E8%A2%AB%E7%A6%81%E5%BF%8C%E7%9A%84%E6%B8%B8%E6%88%8F.mp3',
+            title: 'Black Sheep',
+            author: 'OmenXIII,ʎpoqou',
+            url: 'http://omuwxq7xd.bkt.clouddn.com/OmenXIII,%CA%8Epoqou%20-%20Black%20Sheep.mp3',
         }
     });
 </script>
