@@ -215,7 +215,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> singleton = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> result;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> result || (result = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">var</span> createMask = singleton(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.body.appendChild(<span class="built_in">document</span>.createElement(<span class="string">'div'</span>));</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>使用场景比如页面遮罩层弹出对话框</p>
 <h2 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h2><p>简单工厂模式是由一个方法来决定到底要创建哪个类的实例, 而这些实例经常都拥有相同的接口. 这种模式主要用在所实例化的类型在编译期并不能确定， 而是在执行期决定的情况。 说的通俗点，就像公司茶水间的饮料机，要咖啡还是牛奶取决于你按哪个按钮。</p>
-<p>所谓的构造函数也是一个简单工厂。只是批了一件new的衣服. 我们扒掉这件衣服看看里面。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">name</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ObjectFactory</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> obj = &#123;&#125;,</div><div class="line"></div><div class="line">        Constructor = <span class="built_in">Array</span>.prototype.shift.call(<span class="built_in">arguments</span>);</div><div class="line"></div><div class="line">    obj.__proto__ = <span class="keyword">typeof</span> Constructor.prototype === <span class="string">'number'</span> ? <span class="built_in">Object</span>.prototype</div><div class="line"></div><div class="line">        : Constructor.prototype;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> ret = Constructor.apply(obj, <span class="built_in">arguments</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> ret === <span class="string">'object'</span> ? ret : obj;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = ObjectFactory(A, <span class="string">'svenzeng'</span>);</div><div class="line"></div><div class="line">alert(a.name);  <span class="comment">//svenzeng</span></div></pre></td></tr></table></figure></p>
+<p>所谓的构造函数也是一个简单工厂。只是批了一件new的衣服. 我们扒掉这件衣服看看里面。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">name</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ObjectFactory</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> obj = &#123;&#125;,</div><div class="line"></div><div class="line">        Constructor = <span class="built_in">Array</span>.prototype.shift.call(<span class="built_in">arguments</span>);</div><div class="line"></div><div class="line">    obj.__proto__ = <span class="keyword">typeof</span> Constructor.prototype === <span class="string">'number'</span> ? <span class="built_in">Object</span>.prototype</div><div class="line"></div><div class="line">        : Constructor.prototype;  <span class="comment">// 等于number这种情况会有??? !(Object.getPrototypeOf(Constructor).toString() ===                                  // '[object Object]') 较好吧</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> ret = Constructor.apply(obj, <span class="built_in">arguments</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> ret === <span class="string">'object'</span> ? ret : obj;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = ObjectFactory(A, <span class="string">'svenzeng'</span>);</div><div class="line"></div><div class="line">alert(a.name);  <span class="comment">//svenzeng</span></div></pre></td></tr></table></figure></p>
 <p>以上代码来自es5的new和构造器的相关说明， 可以看到，所谓的new， 本身只是一个对象的复制和改写过程， 而具体会生成什么是由调用ObjectFactory时传进去的参数所决定的。</p>
 
     </article>
@@ -349,8 +349,6 @@
     
     
     
-    
-    
     <div class="total-archive"> Total : 5 </div>
     
     <div class="post-archive">
@@ -402,6 +400,8 @@
     
         <span class="sidebar-tag-name"><a href= "#">资料</a></span>
     
+        <span class="sidebar-tag-name"><a href= "#">设计模式</a></span>
+    
         <span class="sidebar-tag-name"><a href= "#">css</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">DOM</a></span>
@@ -410,11 +410,9 @@
     
         <span class="sidebar-tag-name"><a href= "#">面试题</a></span>
     
-        <span class="sidebar-tag-name"><a href= "#">学习笔记</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">设计模式</a></span>
-    
         <span class="sidebar-tag-name"><a href= "#">js</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">学习笔记</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">test</a></span>
     
