@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://lizhenwu.github.io/blog/"/>
-  <updated>2018-04-12T03:15:58.529Z</updated>
+  <updated>2018-04-14T08:25:44.415Z</updated>
   <id>https://lizhenwu.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>失败的面试总结</title>
+    <link href="https://lizhenwu.github.io/blog/2018/04/14/%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/"/>
+    <id>https://lizhenwu.github.io/blog/2018/04/14/失败的面试总结/</id>
+    <published>2018-04-14T08:25:44.000Z</published>
+    <updated>2018-04-14T08:25:44.415Z</updated>
+    
+    <content type="html"><![CDATA[<p>这一个月的时间，一共投了阿里，腾讯，网易，头条（还有另外两家是音讯全无的状态）几家公司，阿里面了两次，头条两次，腾讯内推面试一次，现场面试一次，把这么多失败经历总结一下。</p><a id="more"></a><h2 id="阿里"><a href="#阿里" class="headerlink" title="阿里"></a>阿里</h2><p>阿里是在3月14号下午投简历的走内推，并没有想到当天晚上7点左右就接到了一面的电话。面试问题如下：</p><ul><li>对前端的理解</li><li>js闭包</li><li>端到端的适配</li><li>移动端怎么响应式</li><li>css3新特性</li><li>es6知道哪些</li><li>node全局对象有哪些</li><li>process对象有什么方法</li><li>对stream(流)的理解</li><li>对框架的理解，和jq有什么区别</li><li>有没有做过数据可视化</li></ul><p>3月19号下午二面，这一次一开始问了关于项目的问题了</p><ul><li>聊天室多开怎么处理</li><li>按钮点击波浪的实现</li><li>对移动端的理解</li><li>移动端怎么模拟hover效果</li><li>对vue和react的理解</li><li>讲一下自己项目觉得做的好的地方</li></ul><p>二面答得很不好反而没记住多少，很惭愧</p><h2 id="腾讯"><a href="#腾讯" class="headerlink" title="腾讯"></a>腾讯</h2><h3 id="内推一面"><a href="#内推一面" class="headerlink" title="内推一面"></a>内推一面</h3><p>一上来就问算法问题，直接懵逼</p><ul><li>有价值200的购物券怎么选四样商品使这个优惠券价值利用最大化</li><li>20G大小的文件，每一行都是一个QQ号，1G内存的机器，从中统计出现次数最多的QQ号</li><li>js闭包以及应用场景</li><li>http缓存，相关http头，其值的含义</li><li>web安全，CSRF，XSS防御</li><li>跨域</li><li>前端性能优化</li><li>快排的流程</li><li>http2新特性</li><li>自己项目遇到的问题以及怎么解决</li><li>学没学过操作系统…</li></ul><h3 id="现场一面"><a href="#现场一面" class="headerlink" title="现场一面"></a>现场一面</h3><ul><li>单页应用怎么SEO</li><li>怎么反爬虫</li><li>css选择器优先级（id父元素内嵌套的子元素按照自身的类还是父元素的样式）</li><li>实现dialog下落到页面中之后放大的动画</li><li>jquery选择器的实现</li><li>github随机头像怎么实现</li><li>http2新特性</li><li>跨域</li><li>node稳定性</li></ul><h2 id="头条"><a href="#头条" class="headerlink" title="头条"></a>头条</h2><h3 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h3><ul><li>css三角形实现</li><li>模态框实现，加动画</li><li>写节流函数</li><li>写树的后序遍历(递归和非递归)</li><li>http表单数据格式</li><li>http缓存 </li><li>cookie,session登录</li></ul><h3 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h3><ul><li>写排序加去重（不用内置方法）</li><li>实现一个观察者模式</li><li>讲一个自己项目的结构</li><li>mongoDB和mySQL的区别，应用场景</li><li>webpack编译流程</li><li>虚拟dom是怎么diff的</li><li>node稳定性</li><li>http2新特性</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>除了阿里的面试太仓促了没来得及准备，其他的面试都至少有一天的时间做了些准备。阿里二面的时候问到了自己项目里的一些具体实现，包括css样式效果和业务逻辑，发现自己做过的东西也不一定记得住，还是需要回顾，并且在项目的<code>readme</code>里应该<strong>记录</strong>一些设计上的规划和有意思的实现方式，这样做项目的收获才能最大化。</p><p>然后是简历，感觉头条的二面认真准备一下的话还是有机会的(那几天清明假光出去玩了)，比如快排如果回顾一下是应该能写出来的，再比如TM的<strong>观察者</strong>就是发布/订阅这件事居然忘了，当时写了个观察者加数据劫持把面试官逗乐了，给人很业余的感觉。因为简历上写了对虚拟dom有了解被问到了diff，当时天真地以为说一下render的流程就可以结果被问了怎么diff。简历上提到项目使用webpack构建于是被问到了webpack的流程，也是措手不及。所以为了简历好看点，还是得深入学习框架，工具等等，否则不敢写上去。同样地，在腾讯现场面试的时候被问jq选择器的实现也是因为简历上写了<code>读过部分jq源码</code>这种<code>naive</code>的骚话。</p><p>项目还需要再完善，自己做的东西在面试官看来太水太玩票，就算过了一面也只有二面陪跑的机会。</p><p>最后还是考虑一下需要实现的小目标，毕竟这么多失败的面试说明问题还是在于技术实力太辣鸡，虽然不一定有时间全部做到。<del>他妈的还能毕业吗</del></p><ol><li>算法，刷leetcode，类似于排序的简单算法要能手写</li><li>学点移动端的知识，比如移动端特有的事件处理</li><li>看点讲http的书，尤其是缓存相关</li><li>注重性能优化，SEO相关，至少要能说得上来一些具体方案</li><li>virtual-dom和jq源码学习既然已经挖坑了就继续</li><li>能手写一些设计模式，还有防抖节流这种常用方法</li><li>注意web安全，内存等问题</li><li>借助写一个webpack插件的过程来学习webpack</li><li>写博客          <code>!important</code></li><li>完善项目，最好能做出一些有<del>噱头</del>的功能</li></ol><hr><p>上面那些面试问题不全，如果能回忆起来的话再补充。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这一个月的时间，一共投了阿里，腾讯，网易，头条（还有另外两家是音讯全无的状态）几家公司，阿里面了两次，头条两次，腾讯内推面试一次，现场面试一次，把这么多失败经历总结一下。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="https://lizhenwu.github.io/blog/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>js设计模式学习</title>
